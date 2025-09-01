@@ -46,6 +46,8 @@ rm build_demo/vault.yml
 ansible-vault create build_demo/vault.yml
 ```
 
+Store the vault password in `build_demo/vault-password.txt` or add the `--ask-vault-password` option to the `ansible-playbook` command below.
+
 The vault structure should look like this:
 
 ```yaml
