@@ -29,10 +29,22 @@ We will integrate both technologies inside AAP:
 - an AWS account with sufficient permissions
 - an AAP 2.5 with admin rights
 - an Ansible Execution Environment that contains the `cloud.terraform` Ansible Collection and the `terraform` binary (prebuilt for the demo and available at `ghcr.io/sebw/ee_terraform`)
+- The node where you will run the playbook needs to have the `botocore` and `boto3` libraries installed. These can be installed using pip:
+
+```
+pip install botocore
+pip install boto3
+```
 
 ## Preparing your AAP and AWS environments
 
 In the `build_demo` folder, replace the vault.yml with your own.
+
+```
+cd aap2_terraform_demo/
+rm build_demo/vault.yml
+ansible-vault create build_demo/vault.yml
+```
 
 The vault structure should look like this:
 
@@ -64,18 +76,21 @@ This will create all the AAP resources:
 - credentials
   - to access AWS
   - to store the Terraform state file in an S3 bucket
-  - the SSH credential to connect to the EC2 instances 
+  - the SSH credential to connect to the EC2 instances
 - some jobs
 - a workflow that plugs those jobs
 
-Some AWS resources: 
+Some AWS resources:
 
 - a key pair that will be used by AAP to post provision EC2 instances
 - an S3 bucket that will be used to store the Terraform State file
 
+Note: all resources will be created in the `eu-central-1` region. Make sure to
+set the correct region in the Amazon AWS console.
+
 ## When AAP is up and running
 
-Under Automation Execution > Templates, run the workflow.
+Under Automation Execution > Templates, run the workflow "Workflow all in one".
 
 It will create two EC2 instances (CentOS Stream + Amazon Linux) using Terraform.
 
