@@ -5,7 +5,7 @@ This repository was used during @vseynhae and @sebw talk at
  - Voxxed Days Luxembourg 2025 (branch `main`)
  - Red Hat Summit Connect 2025 Brussels (branch `summit_connect_25`)
 
-Slides are available in the [pdf directory](https://github.com/RedHatBelux/AAP2_terraform/tree/summit_connect_25/pdf)
+Slides are available [here](https://github.com/RedHatBelux/AAP2_terraform/blob/summit_connect_2025/pdf/summit_connect_brussels_2025.pdf)
 
 ## Intro
 
