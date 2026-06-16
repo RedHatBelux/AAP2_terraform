@@ -9,9 +9,9 @@
         force_init: true
         backend_config_files:
           - "{{ lookup('ansible.builtin.env', 'TF_BACKEND_CONFIG_FILE') }}"
-	variables:
-	  instance_name: "{{ instance_name }}"
-	  instance_type: "{{ instance_type }}"
+        variables:
+          instance_name: "{{ instance_name }}"
+          instance_type: "{{ instance_type }}"
       register: output
 
     - debug:
