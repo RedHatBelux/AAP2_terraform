@@ -5,7 +5,7 @@
 
   vars:
     instance_name: "{{ instance_name }}"
-    instance_type "{{  instance_type}}"
+    instance_type "{{  instance_type }}"
 
   tasks:
     - name: 📋 Display requested VM parameters
