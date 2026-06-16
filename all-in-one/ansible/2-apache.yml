@@ -30,7 +30,7 @@
     - name: Create index.html with custom content
       ansible.builtin.copy:
         dest: /var/www/html/index.html
-        content: "{{ message | default('Hello World') }}<br/><br/>Provided to you by {{ ansible_facts['distribution'] }} Linux" 
+        content: "{{ message | default('Hello World') }}<br/><br/>Apache WebServer running on {{ ansible_facts['distribution'] }} Linux" 
         owner: root
         group: root
         mode: '0644'
