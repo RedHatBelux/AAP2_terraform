@@ -1,0 +1,29 @@
+---
+- name: 🔍 Check VM Size
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+    instance_name: "{{ instance_name }}"
+    instance_type "{{  instance_type}}"
+
+  tasks:
+    - name: 📋 Display requested VM parameters
+      ansible.builtin.debug:
+        msg: "📥 Received request - VM: {{ instance_name }}, Size: {{ instance_type }}"
+
+    - name: ❌ Fail if size requires approval
+      ansible.builtin.fail:
+        msg: "🚫 Size '{{ instance_type }}' requires approval."
+      when: instance_type not in ["t3.small", "t3.medium"]
+
+    - name: ✅ Size check passed
+      ansible.builtin.debug:
+        msg: "✅ Size '{{ instance_type }}' is valid. Proceeding with VM creation."
+
+    - name: Set stats for next workflow node
+      ansible.builtin.set_stats:
+        data:
+          instance_name: "{{ instance_name }}"
+          instance_type: "{{ instance_type }}"
+          job_status: "success"
